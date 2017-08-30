@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <files-path
+        name="myimages"
+        path="images/" />
+
+    <external-path
+        name="my_images"
+        path="Android/data/com.huoxy.googleofficialpractice/files/Pictures" />
+
+    <!--<cache-path
+        name="mycache"
+        path="caches/" />-->
+</paths>
