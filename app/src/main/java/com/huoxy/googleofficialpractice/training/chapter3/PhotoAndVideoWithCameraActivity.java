@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
+import android.support.v4.print.PrintHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,7 +25,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * 拍照 & 录像 & 操作Camera Demo
+ * 拍照 & 录像 & 操作Camera & 打印 Demo
  */
 public class PhotoAndVideoWithCameraActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -33,7 +34,7 @@ public class PhotoAndVideoWithCameraActivity extends AppCompatActivity implement
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int REQUEST_VIDEO_CAPTURE = 2;
 
-    private Button btnPhoto, btnVideo, btnControlCamera;
+    private Button btnPhoto, btnVideo, btnControlCamera, btnPrint;
     private ImageView ivPhoto;
     private VideoView vv_video;
 
@@ -52,6 +53,7 @@ public class PhotoAndVideoWithCameraActivity extends AppCompatActivity implement
         btnPhoto = (Button) findViewById(R.id.btn_photo);
         btnVideo = (Button) findViewById(R.id.btn_video);
         btnControlCamera = (Button) findViewById(R.id.btn_control_camera);
+        btnPrint = (Button) findViewById(R.id.btn_print);
         ivPhoto = (ImageView) findViewById(R.id.iv_photo);
         vv_video = (VideoView) findViewById(R.id.vv_video);
     }
@@ -60,6 +62,7 @@ public class PhotoAndVideoWithCameraActivity extends AppCompatActivity implement
         btnPhoto.setOnClickListener(this);
         btnVideo.setOnClickListener(this);
         btnControlCamera.setOnClickListener(this);
+        btnPrint.setOnClickListener(this);
     }
 
 
@@ -74,6 +77,9 @@ public class PhotoAndVideoWithCameraActivity extends AppCompatActivity implement
                 break;
             case R.id.btn_control_camera:
 
+                break;
+            case R.id.btn_print:
+                printImage();
                 break;
         }
     }
@@ -162,6 +168,14 @@ public class PhotoAndVideoWithCameraActivity extends AppCompatActivity implement
     //======================= 3 - 操作Camera ===========================
 
 
+    //======================= 4 - 打印测试 ===========================
+    private void printImage(){
+        Toast.makeText(this, "开始打印...", Toast.LENGTH_SHORT).show();
+        PrintHelper photoPrinter = new PrintHelper(this);
+        photoPrinter.setScaleMode(PrintHelper.SCALE_MODE_FIT);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+        photoPrinter.printBitmap("ic_launcher.jpg - test print", bitmap);
+    }
 
 
     //======================= 0 - 拍照、录像回调 ===========================
@@ -174,6 +188,7 @@ public class PhotoAndVideoWithCameraActivity extends AppCompatActivity implement
                     /*Bundle extras = data.getExtras();
                     Bitmap bitmap = (Bitmap) extras.get("data");
                     ivPhoto.setImageBitmap(bitmap);*/
+                    ivPhoto.setVisibility(View.VISIBLE);
                     addPictureToGallery();
                     setPic();
                 }
@@ -181,6 +196,7 @@ public class PhotoAndVideoWithCameraActivity extends AppCompatActivity implement
             case REQUEST_VIDEO_CAPTURE:
                 if(resultCode == RESULT_OK){
                     Uri videoUri = data.getData();
+                    vv_video.setVisibility(View.VISIBLE);
                     vv_video.setVideoURI(videoUri);
                     vv_video.start();
                 }
