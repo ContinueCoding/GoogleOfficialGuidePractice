@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context="com.huoxy.googleofficialpractice.training.chapter4.Chapter4Activity">
+
+    <Button
+        android:id="@+id/btn_open_gl_es"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Displaying Graphics with OpenGL ES"
+        android:textSize="12sp"
+        android:textAllCaps="false"
+        android:layout_marginTop="10dp"
+        />
+
+    <Button
+        android:id="@+id/btn_animating_scenes_transitions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Animating Views with Scenes and Transitions"
+        android:textSize="12sp"
+        android:textAllCaps="false"
+        android:layout_marginTop="10dp"
+        />
+
+    <Button
+        android:id="@+id/btn_add_animations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adding Animations"
+        android:textSize="12sp"
+        android:textAllCaps="false"
+        android:layout_marginTop="10dp"
+        />
+
+    <Button
+        android:id="@+id/btn_wide_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enhancing Graphics with Wide Color Content"
+        android:textSize="12sp"
+        android:textAllCaps="false"
+        android:layout_marginTop="10dp"
+        />
+
+</LinearLayout>

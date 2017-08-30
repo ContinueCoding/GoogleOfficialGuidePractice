@@ -8,6 +8,7 @@ import android.view.View;
 import com.huoxy.googleofficialpractice.R;
 import com.huoxy.googleofficialpractice.training.chapter2.ContentSharingActivity;
 import com.huoxy.googleofficialpractice.training.chapter3.PhotoAndVideoWithCameraActivity;
+import com.huoxy.googleofficialpractice.training.chapter4.Chapter4Activity;
 
 public class TrainingActivity extends AppCompatActivity {
 
@@ -29,6 +30,14 @@ public class TrainingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(TrainingActivity.this, PhotoAndVideoWithCameraActivity.class));
+            }
+        });
+
+        //CH4 - Building Apps with Graphics & Animation
+        findViewById(R.id.chapter3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TrainingActivity.this, Chapter4Activity.class));
             }
         });
     }
