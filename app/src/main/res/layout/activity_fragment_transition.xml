@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.huoxy.googleofficialpractice.apiguide.chapter1.FragmentTransitionActivity">
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/fragment_transition_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="Fragment Transition - Open"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/fragment_transition_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="Fragment Transition - Close"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/fragment_transition_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="Fragment Transition - Fade"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/fragment_transition_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="Fragment Transition - Custom"
+        android:textAllCaps="false" />
+</LinearLayout>

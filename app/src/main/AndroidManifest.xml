@@ -49,7 +49,8 @@
 
         <activity android:name=".training.chapter3.PhotoAndVideoWithCameraActivity" />
         <activity android:name=".training.chapter4.Chapter4Activity" />
-        <activity android:name=".apiguide.chapter1.AppComponentActivity"></activity>
+        <activity android:name=".apiguide.chapter1.AppComponentActivity" />
+        <activity android:name=".apiguide.chapter1.FragmentTransitionActivity"></activity>
     </application>
 
 </manifest>
