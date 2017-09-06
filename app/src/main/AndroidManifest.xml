@@ -48,7 +48,8 @@
         </provider>
 
         <activity android:name=".training.chapter3.PhotoAndVideoWithCameraActivity" />
-        <activity android:name=".training.chapter4.Chapter4Activity"></activity>
+        <activity android:name=".training.chapter4.Chapter4Activity" />
+        <activity android:name=".apiguide.chapter1.AppComponentActivity"></activity>
     </application>
 
 </manifest>
