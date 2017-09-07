@@ -63,3 +63,4 @@ freeline.py
 freeline/
 freeline_project_description.json
 
+!/app/src/main/res/layout/activity_app_component.xml

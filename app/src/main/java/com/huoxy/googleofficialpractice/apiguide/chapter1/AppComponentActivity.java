@@ -22,5 +22,13 @@ public class AppComponentActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
         });
+
+        //2 - 加载器 - 在Activity or Fragment中异步加载数据
+        findViewById(R.id.loader).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AppComponentActivity.this, LoaderActivity.class));
+            }
+        });
     }
 }
