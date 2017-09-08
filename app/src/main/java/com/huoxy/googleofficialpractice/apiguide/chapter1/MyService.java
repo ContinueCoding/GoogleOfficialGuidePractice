@@ -2,12 +2,24 @@ package com.huoxy.googleofficialpractice.apiguide.chapter1;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
 import android.util.Log;
+
+import java.util.Random;
 
 public class MyService extends Service {
 
     private static final String TAG = "MyService";
+
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            int startId = msg.what;
+            stopSelf(startId);
+        }
+    };
 
     public MyService() {
     }
@@ -24,8 +36,23 @@ public class MyService extends Service {
     }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.i(TAG, "startId = " + startId);
+    public int onStartCommand(Intent intent, int flags, final int startId) {
+        new Thread(){
+            @Override
+            public void run() {
+                Random random = new Random();
+                try {
+                    int millis = random.nextInt(5000);
+                    Log.i(TAG, "Task time = " + millis + ", taskId = " + startId);
+                    Thread.sleep(millis);
+                    Message obtain = Message.obtain();
+                    obtain.what = startId;
+                    handler.sendMessage(obtain);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -36,6 +63,7 @@ public class MyService extends Service {
 
     @Override
     public void onDestroy() {
+        Log.i(TAG, "onDestroy() ------ ");
         super.onDestroy();
     }
 
