@@ -51,7 +51,13 @@
         <activity android:name=".training.chapter4.Chapter4Activity" />
         <activity android:name=".apiguide.chapter1.AppComponentActivity" />
         <activity android:name=".apiguide.chapter1.FragmentTransitionActivity" />
-        <activity android:name=".apiguide.chapter1.LoaderActivity"></activity>
+        <activity android:name=".apiguide.chapter1.LoaderActivity" />
+        <activity android:name=".apiguide.chapter1.ServiceActivity" />
+
+        <service
+            android:name=".apiguide.chapter1.MyService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

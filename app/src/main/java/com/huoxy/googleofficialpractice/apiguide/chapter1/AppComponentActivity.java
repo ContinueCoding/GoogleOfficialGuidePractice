@@ -30,5 +30,13 @@ public class AppComponentActivity extends AppCompatActivity {
                 startActivity(new Intent(AppComponentActivity.this, LoaderActivity.class));
             }
         });
+
+        //3 - Service
+        findViewById(R.id.service).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AppComponentActivity.this, ServiceActivity.class));
+            }
+        });
     }
 }
