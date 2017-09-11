@@ -38,5 +38,13 @@ public class AppComponentActivity extends AppCompatActivity {
                 startActivity(new Intent(AppComponentActivity.this, ServiceActivity.class));
             }
         });
+
+        //4 - ContentProvider
+        findViewById(R.id.content_provider).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AppComponentActivity.this, ContentProviderActivity.class));
+            }
+        });
     }
 }
