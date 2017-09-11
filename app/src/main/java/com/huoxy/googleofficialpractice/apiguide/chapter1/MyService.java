@@ -2,6 +2,7 @@ package com.huoxy.googleofficialpractice.apiguide.chapter1;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Binder;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -21,13 +22,15 @@ public class MyService extends Service {
         }
     };
 
+    private final LocalBinder binder = new LocalBinder();
+    private final Random random = new Random();
+
     public MyService() {
     }
 
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
-        throw new UnsupportedOperationException("Not yet implemented");
+        return binder;
     }
 
     @Override
@@ -64,7 +67,23 @@ public class MyService extends Service {
     @Override
     public void onDestroy() {
         Log.i(TAG, "onDestroy() ------ ");
+        handler.removeCallbacksAndMessages(null);
         super.onDestroy();
+    }
+
+    //IBinder
+    public class LocalBinder extends Binder {
+        MyService getService(){
+            return MyService.this;
+        }
+    }
+
+    /**
+     * 获取100以内的随机数，供客户端调用
+     * @return 随机数
+     */
+    public int getRandomNumber(){
+        return random.nextInt(100);
     }
 
 }
