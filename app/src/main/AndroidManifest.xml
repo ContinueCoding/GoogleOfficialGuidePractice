@@ -61,6 +61,10 @@
         <service
             android:name=".apiguide.chapter1.MessengerService"
             android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".apiguide.chapter1.AidlService"
+            android:enabled="true"
             android:exported="true"></service>
     </application>
 
