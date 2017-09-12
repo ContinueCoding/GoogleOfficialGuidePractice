@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
+import android.provider.ContactsContract;
 import android.provider.UserDictionary;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -52,9 +53,12 @@ public class ContentProviderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ArrayList<ContentProviderOperation> operations = new ArrayList<>();
-                operations.add(ContentProviderOperation.newInsert(UserDictionary.Words.CONTENT_URI).withValue(UserDictionary.Words.WORD, "Kaka").withYieldAllowed(true).build());
-                operations.add(ContentProviderOperation.newInsert(UserDictionary.Words.CONTENT_URI).withValue(UserDictionary.Words.WORD, "Rooney").withYieldAllowed(true).build());
-                operations.add(ContentProviderOperation.newInsert(UserDictionary.Words.CONTENT_URI).withValue(UserDictionary.Words.WORD, "Ronaldo").withYieldAllowed(true).build());
+                operations.add(ContentProviderOperation.newInsert(UserDictionary.Words.CONTENT_URI)
+                        .withValue(UserDictionary.Words.WORD, "Kaka").withYieldAllowed(true).build());
+                operations.add(ContentProviderOperation.newInsert(UserDictionary.Words.CONTENT_URI)
+                        .withValue(UserDictionary.Words.WORD, "Rooney").withYieldAllowed(true).build());
+                operations.add(ContentProviderOperation.newInsert(UserDictionary.Words.CONTENT_URI)
+                        .withValue(UserDictionary.Words.WORD, "Ronaldo").withYieldAllowed(true).build());
                 try {
                     ContentProviderResult[] results = getContentResolver().applyBatch(UserDictionary.AUTHORITY, operations);
                     //results = [ContentProviderResult(uri=content://user_dictionary/words/8),
@@ -108,6 +112,45 @@ public class ContentProviderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(ContentProviderActivity.this, "TODO", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        //联系人 - 用户个人资料
+        findViewById(R.id.cp_contacts_profile).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    // Sets the columns to retrieve for the user profile
+                    String[] mProjection = new String[]
+                            {
+                                    ContactsContract.Profile._ID,
+                                    ContactsContract.Profile.DISPLAY_NAME_PRIMARY,
+                                    ContactsContract.Profile.LOOKUP_KEY,
+                                    ContactsContract.Profile.PHOTO_THUMBNAIL_URI
+                            };
+
+                    // Retrieves the profile from the Contacts Provider
+                    Cursor mProfileCursor = getContentResolver().query(
+                            ContactsContract.Profile.CONTENT_URI,
+                            mProjection,
+                            null,
+                            null,
+                            null);
+
+                    if (mProfileCursor != null && mProfileCursor.moveToNext()) {
+                        String name = mProfileCursor.getString(mProfileCursor.getColumnIndex(ContactsContract.Profile.DISPLAY_NAME_PRIMARY));
+                        String lookupKey = mProfileCursor.getString(mProfileCursor.getColumnIndex(ContactsContract.Profile.LOOKUP_KEY));
+                        Log.i(TAG, "用户个人资料：name = " + name + ", key = " + lookupKey);
+                    } else {
+                        Toast.makeText(ContentProviderActivity.this, "获取用户个人资料失败", Toast.LENGTH_SHORT).show();
+                    }
+
+                    if (mProfileCursor != null) {
+                        mProfileCursor.close();
+                    }
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
             }
         });
     }
