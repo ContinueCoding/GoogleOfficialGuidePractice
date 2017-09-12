@@ -2,8 +2,12 @@ package com.huoxy.googleofficialpractice.apiguide.chapter1;
 
 import android.content.ContentProviderOperation;
 import android.content.ContentProviderResult;
+import android.content.ContentUris;
+import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.provider.UserDictionary;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -14,6 +18,7 @@ import com.huoxy.googleofficialpractice.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 
 /**
  * ContentProvider Demo
@@ -60,6 +65,49 @@ public class ContentProviderActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 Toast.makeText(ContentProviderActivity.this, "批量插入成功", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //日历 - 查看日历(查看特定日期 or 事件)
+        findViewById(R.id.cp_calendar_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                long startMillis = System.currentTimeMillis() + 4 * 24 * 3600 * 1000;
+                Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
+                builder.appendPath("time");
+                ContentUris.appendId(builder, startMillis);
+                Intent intent = new Intent(Intent.ACTION_VIEW)
+                        .setData(builder.build());
+                startActivity(intent);
+            }
+        });
+
+        //日历 - 插入事件
+        findViewById(R.id.cp_calendar_insert).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar beginTime = Calendar.getInstance();
+                beginTime.set(2017, 8, 16, 10, 0);
+                Calendar endTime = Calendar.getInstance();
+                endTime.set(2017, 8, 16, 12, 0);
+                Intent intent = new Intent(Intent.ACTION_INSERT)
+                        .setData(CalendarContract.Events.CONTENT_URI)
+                        .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
+                        .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis())
+                        .putExtra(CalendarContract.Events.TITLE, "Fitness")
+                        .putExtra(CalendarContract.Events.DESCRIPTION, "Group class")
+                        .putExtra(CalendarContract.Events.EVENT_LOCATION, "The HardSugar Gym")
+                        .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY)
+                        .putExtra(Intent.EXTRA_EMAIL, "huo_xy2010@163.com");
+                startActivity(intent);
+            }
+        });
+
+        //日历 - 编辑事件
+        findViewById(R.id.cp_calendar_edit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ContentProviderActivity.this, "TODO", Toast.LENGTH_LONG).show();
             }
         });
     }
