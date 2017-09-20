@@ -28,6 +28,10 @@ public class ContentProviderActivity extends AppCompatActivity {
 
     private static final String TAG = "ContentProvider";
 
+    private static final int REQUEST_CODE_READ = 1000;
+    private static final int REQUEST_CODE_EDIT = 1001;
+    private static final int REQUEST_CODE_PICK = 1002;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -153,5 +157,41 @@ public class ContentProviderActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //存储访问框架 - SAF
+        findViewById(R.id.cp_saf).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // ACTION_OPEN_DOCUMENT is the intent to choose a file via the system's file
+                // browser.
+                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+
+                // Filter to only show results that can be "opened", such as a
+                // file (as opposed to a list of contacts or timezones)
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+
+                // Filter to show only images, using the image MIME data type.
+                // If one wanted to search for ogg vorbis files, the type would be "audio/ogg".
+                // To search for all documents available via installed storage providers,
+                // it would be "*/*".
+                intent.setType("image/*");
+
+                startActivityForResult(intent, REQUEST_CODE_READ);
+
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case REQUEST_CODE_READ:
+                    Uri uri = data.getData();
+                    Toast.makeText(this, "Uri = " + uri, Toast.LENGTH_LONG).show();
+                    break;
+            }
+        }
     }
 }
