@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.huoxy.googleofficialpractice.R;
 import com.huoxy.googleofficialpractice.apiguide.chapter1.AppComponentActivity;
+import com.huoxy.googleofficialpractice.apiguide.chapter2.AppResourcesActivity;
 
 public class ApiGuideActivity extends AppCompatActivity {
 
@@ -25,6 +26,16 @@ public class ApiGuideActivity extends AppCompatActivity {
                 startActivity(new Intent(ApiGuideActivity.this, AppComponentActivity.class));
             }
         });
+
+        //2 - 应用资源
+        findViewById(R.id.app_resources).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ApiGuideActivity.this, AppResourcesActivity.class));
+            }
+        });
+
+
     }
 
     @Override

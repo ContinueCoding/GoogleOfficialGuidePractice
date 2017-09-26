@@ -74,7 +74,8 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".apiguide.chapter1.ContentProviderActivity"></activity>
+        <activity android:name=".apiguide.chapter1.ContentProviderActivity" />
+        <activity android:name=".apiguide.chapter2.AppResourcesActivity"></activity>
     </application>
 
 </manifest>
