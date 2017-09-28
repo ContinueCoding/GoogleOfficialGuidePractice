@@ -35,20 +35,10 @@
             />
 
         <Button
-            android:id="@+id/app_manifest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="3 - 应用清单"
-            android:textSize="12sp"
-            android:textColor="#000"
-            android:layout_margin="5dp"
-            />
-
-        <Button
             android:id="@+id/user_interface"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4 - 用户界面"
+            android:text="3 - 用户界面"
             android:textSize="12sp"
             android:textColor="#000"
             android:layout_margin="5dp"
@@ -58,7 +48,7 @@
             android:id="@+id/animation_graphic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5 - 动画和图形"
+            android:text="4 - 动画和图形"
             android:textSize="12sp"
             android:textColor="#000"
             android:layout_margin="5dp"

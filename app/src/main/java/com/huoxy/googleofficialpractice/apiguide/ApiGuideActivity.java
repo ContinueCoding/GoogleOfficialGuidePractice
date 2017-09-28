@@ -9,6 +9,7 @@ import android.view.View;
 import com.huoxy.googleofficialpractice.R;
 import com.huoxy.googleofficialpractice.apiguide.chapter1.AppComponentActivity;
 import com.huoxy.googleofficialpractice.apiguide.chapter2.AppResourcesActivity;
+import com.huoxy.googleofficialpractice.apiguide.chapter3.UserInterfaceActivity;
 
 public class ApiGuideActivity extends AppCompatActivity {
 
@@ -32,6 +33,15 @@ public class ApiGuideActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ApiGuideActivity.this, AppResourcesActivity.class));
+            }
+        });
+
+
+        //3 - 用户界面
+        findViewById(R.id.user_interface).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ApiGuideActivity.this, UserInterfaceActivity.class));
             }
         });
 
