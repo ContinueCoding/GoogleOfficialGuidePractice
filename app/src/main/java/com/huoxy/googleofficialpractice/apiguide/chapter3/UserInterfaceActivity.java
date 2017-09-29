@@ -20,8 +20,6 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.huoxy.googleofficialpractice.R;
-import com.huoxy.googleofficialpractice.training.chapter4.DatePickerFragment;
-import com.huoxy.googleofficialpractice.training.chapter4.TimePickerFragment;
 
 public class UserInterfaceActivity extends AppCompatActivity {
 
@@ -64,6 +62,7 @@ public class UserInterfaceActivity extends AppCompatActivity {
             }
         });
 
+
         checkBox = (CheckBox) findViewById(R.id.checkbox);
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,9 +76,9 @@ public class UserInterfaceActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 //do sth based on isChecked
                 if (isChecked) {
-
+                    Toast.makeText(UserInterfaceActivity.this, "Checked", Toast.LENGTH_SHORT).show();
                 } else {
-
+                    Toast.makeText(UserInterfaceActivity.this, "Unchecked", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -115,6 +114,7 @@ public class UserInterfaceActivity extends AppCompatActivity {
                 }
             }
         });
+
 
         timePicker = (Button) findViewById(R.id.time_picker);
         datePicker = (Button) findViewById(R.id.date_picker);
