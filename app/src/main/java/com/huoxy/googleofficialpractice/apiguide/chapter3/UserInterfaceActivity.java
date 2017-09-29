@@ -1,8 +1,13 @@
 package com.huoxy.googleofficialpractice.apiguide.chapter3;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -20,6 +25,7 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.huoxy.googleofficialpractice.R;
+import com.huoxy.googleofficialpractice.apiguide.ApiGuideActivity;
 
 public class UserInterfaceActivity extends AppCompatActivity {
 
@@ -35,6 +41,8 @@ public class UserInterfaceActivity extends AppCompatActivity {
     ToggleButton toggleButton;
 
     Button timePicker, datePicker;
+
+    Button simpleNotification;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,6 +140,48 @@ public class UserInterfaceActivity extends AppCompatActivity {
                 pickerFragment.show(getSupportFragmentManager(), "datePicker");
             }
         });
+
+
+        simpleNotification = (Button) findViewById(R.id.simple_notification);
+        simpleNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createSimpleNotification();
+            }
+        });
+
+
+    }
+
+    private void createSimpleNotification() {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("Title")
+                .setContentText("Notification Content Text......");
+
+        NotificationCompat.InboxStyle style = new NotificationCompat.InboxStyle();
+        String[] events = new String[6];
+        style.setBigContentTitle("Event tracker detail:");
+        for (int i = 0; i < events.length; i++) {
+            style.addLine("---" + i);
+        }
+        builder.setStyle(style);
+
+        Intent resultIntent = new Intent(this, ApiGuideActivity.class);
+
+        // The stack builder object will contain an artificial back stack for the started Activity.
+        // This ensures that navigating backward from the Activity leads out of
+        // your application to the Home screen.
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        // Adds the back stack for the Intent (but not the Intent itself)
+        stackBuilder.addParentStack(ApiGuideActivity.class);
+        // Adds the Intent that starts the Activity to the top of the stack
+        stackBuilder.addNextIntent(resultIntent);
+        PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(pendingIntent);
+
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(0, builder.build());
     }
 
 }
