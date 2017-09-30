@@ -4,14 +4,21 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
@@ -46,11 +53,16 @@ public class UserInterfaceActivity extends AppCompatActivity {
     Button timePicker, datePicker;
 
     NotificationManager notificationManager;
-    Button simpleNotification, progressNotification, progressNotification2;
+    Button simpleNotification, progressNotification, progressNotification2,
+            fullScreenNotification;
+
+    Button customToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_user_interface);
 
         manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -172,6 +184,33 @@ public class UserInterfaceActivity extends AppCompatActivity {
                 createProgressNotification2();
             }
         });
+
+        fullScreenNotification = (Button) findViewById(R.id.full_screen_notification);
+        fullScreenNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createFullScreenN();
+            }
+        });
+
+        customToast = (Button) findViewById(R.id.custom_toast);
+        customToast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.custom_toast_layout,
+                        (ViewGroup) findViewById(R.id.custom_toast_container));
+
+                TextView text = (TextView) layout.findViewById(R.id.text);
+                text.setText("This is a custom toast");
+
+                Toast toast = new Toast(getApplicationContext());
+                toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                toast.setDuration(Toast.LENGTH_LONG);
+                toast.setView(layout);
+                toast.show();
+            }
+        });
     }
 
     private void createSimpleNotification() {
@@ -285,5 +324,20 @@ public class UserInterfaceActivity extends AppCompatActivity {
                 // Starts the thread by calling the run() method in its Runnable
         ).start();
 
+    }
+
+    private void createFullScreenN(){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("浮动通知")
+                .setContentText("Notification Content Text......");
+
+        // 设置通知的优先级
+        builder.setPriority(NotificationCompat.PRIORITY_MAX);
+        Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        // 设置通知的提示音
+        builder.setSound(alarmSound);
+
+        notificationManager.notify(1, builder.build());
     }
 }

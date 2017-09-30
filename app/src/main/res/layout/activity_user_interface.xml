@@ -158,6 +158,26 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             />
+
+        <Button
+            android:id="@+id/full_screen_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="浮动 Notification"
+            android:textAllCaps="false"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            />
+
+        <Button
+            android:id="@+id/custom_toast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="自定义Toast"
+            android:textAllCaps="false"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            />
     </LinearLayout>
 </ScrollView>
 
