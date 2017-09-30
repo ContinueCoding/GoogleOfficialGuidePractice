@@ -30,7 +30,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".apiguide.ApiGuideActivity" />
+        <activity android:name=".apiguide.ApiGuideActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"
+                />
+        </activity>
         <activity android:name=".training.TrainingActivity" />
         <activity android:name=".training.chapter2.ContentSharingActivity">
             <intent-filter>

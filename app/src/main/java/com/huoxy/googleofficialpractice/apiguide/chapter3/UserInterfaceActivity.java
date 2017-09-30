@@ -9,6 +9,7 @@ import android.support.annotation.IdRes;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -27,6 +28,8 @@ import android.widget.ToggleButton;
 import com.huoxy.googleofficialpractice.R;
 import com.huoxy.googleofficialpractice.apiguide.ApiGuideActivity;
 
+import static android.os.Build.ID;
+
 public class UserInterfaceActivity extends AppCompatActivity {
 
     EditText et_input;
@@ -42,7 +45,8 @@ public class UserInterfaceActivity extends AppCompatActivity {
 
     Button timePicker, datePicker;
 
-    Button simpleNotification;
+    NotificationManager notificationManager;
+    Button simpleNotification, progressNotification, progressNotification2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,8 @@ public class UserInterfaceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_interface);
 
         manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
         et_input = (EditText) findViewById(R.id.et_input);
         et_input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -151,6 +157,21 @@ public class UserInterfaceActivity extends AppCompatActivity {
         });
 
 
+        progressNotification = (Button) findViewById(R.id.progress_notification);
+        progressNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createProgressNotification();
+            }
+        });
+
+        progressNotification2 = (Button) findViewById(R.id.progress_notification2);
+        progressNotification2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createProgressNotification2();
+            }
+        });
     }
 
     private void createSimpleNotification() {
@@ -179,9 +200,90 @@ public class UserInterfaceActivity extends AppCompatActivity {
         stackBuilder.addNextIntent(resultIntent);
         PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(pendingIntent);
+        builder.setAutoCancel(true);//点击时关闭通知
 
-        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(0, builder.build());
+        notificationManager.notify(0, builder.build());
     }
 
+    private void createProgressNotification(){
+        final NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("Progress Notification")
+                .setContentText("Notification in progress......");
+
+        // Start a lengthy operation in a background thread
+        new Thread(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        int incr;
+                        // Do the "lengthy" operation 20 times
+                        for (incr = 0; incr <= 100; incr+=5) {
+                            // Sets the progress indicator to a max value, the
+                            // current completion percentage, and "determinate"
+                            // state
+                            builder.setProgress(100, incr, false);
+                            // Displays the progress bar for the first time.
+                            notificationManager.notify(0, builder.build());
+                            // Sleeps the thread, simulating an operation
+                            // that takes time
+                            try {
+                                // Sleep for 5 seconds
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        // When the loop is finished, updates the notification
+                        builder.setContentText("Download complete")
+                                // Removes the progress bar
+                                .setProgress(0,0,false);
+                        notificationManager.notify(0, builder.build());
+                    }
+                }
+        // Starts the thread by calling the run() method in its Runnable
+        ).start();
+
+    }
+
+    private void createProgressNotification2(){
+        final NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("Progress Notification")
+                .setContentText("Notification in progress......");
+
+        // Start a lengthy operation in a background thread
+        new Thread(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        int incr;
+                        // Do the "lengthy" operation 20 times
+                        for (incr = 0; incr <= 100; incr+=5) {
+                            // Sets the progress indicator to a max value, the
+                            // current completion percentage, and "determinate"
+                            // state
+                            builder.setProgress(0, 0, true);
+                            // Displays the progress bar for the first time.
+                            notificationManager.notify(0, builder.build());
+                            // Sleeps the thread, simulating an operation
+                            // that takes time
+                            try {
+                                // Sleep for 5 seconds
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        // When the loop is finished, updates the notification
+                        builder.setContentText("Download complete")
+                                // Removes the progress bar
+                                .setProgress(0,0,false);
+                        notificationManager.notify(0, builder.build());
+                    }
+                }
+                // Starts the thread by calling the run() method in its Runnable
+        ).start();
+
+    }
 }
