@@ -30,11 +30,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".apiguide.ApiGuideActivity"
+        <activity
+            android:name=".apiguide.ApiGuideActivity"
             android:parentActivityName=".MainActivity">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"
-                />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
         <activity android:name=".training.TrainingActivity" />
         <activity android:name=".training.chapter2.ContentSharingActivity">
@@ -81,8 +82,26 @@
 
         <activity android:name=".apiguide.chapter1.ContentProviderActivity" />
         <activity android:name=".apiguide.chapter2.AppResourcesActivity" />
-        <activity android:name=".apiguide.chapter3.UserInterfaceActivity"
-            android:windowSoftInputMode="adjustResize"></activity>
+        <activity
+            android:name=".apiguide.chapter3.UserInterfaceActivity"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!--搜索-->
+        <activity android:name=".apiguide.chapter3.SearchActivity" >
+            <meta-data android:name="android.app.default_searchable"
+                android:value=".apiguide.chapter3.SearchableActivity"
+                />
+        </activity>
+
+        <activity android:name=".apiguide.chapter3.SearchableActivity"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable"/>
+        </activity>
+
     </application>
 
 </manifest>

@@ -58,6 +58,8 @@ public class UserInterfaceActivity extends AppCompatActivity {
 
     Button customToast;
 
+    Button searchDemo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -193,6 +195,7 @@ public class UserInterfaceActivity extends AppCompatActivity {
             }
         });
 
+
         customToast = (Button) findViewById(R.id.custom_toast);
         customToast.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -209,6 +212,15 @@ public class UserInterfaceActivity extends AppCompatActivity {
                 toast.setDuration(Toast.LENGTH_LONG);
                 toast.setView(layout);
                 toast.show();
+            }
+        });
+
+
+        searchDemo = (Button) findViewById(R.id.search_demo);
+        searchDemo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserInterfaceActivity.this, SearchActivity.class));
             }
         });
     }
