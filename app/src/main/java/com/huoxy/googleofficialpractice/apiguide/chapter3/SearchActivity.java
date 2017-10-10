@@ -1,10 +1,12 @@
 package com.huoxy.googleofficialpractice.apiguide.chapter3;
 
+import android.app.SearchManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SearchView;
 
 import com.huoxy.googleofficialpractice.R;
 
@@ -13,6 +15,8 @@ import com.huoxy.googleofficialpractice.R;
  *
  */
 public class SearchActivity extends AppCompatActivity {
+
+    private static final String TAG = "SearchActivity";
 
     private Button searchDialog;
 
@@ -34,12 +38,32 @@ public class SearchActivity extends AppCompatActivity {
 
         //TODO 2 - SearchView
         searchView = (SearchView) findViewById(R.id.search_view);
+        SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
+        // Assumes current activity is the searchable activity
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        // Do not iconify the widget; expand it by default
+        searchView.setIconifiedByDefault(false);
+        searchView.setQueryHint("请输入搜索关键词");
+        searchView.setSubmitButtonEnabled(true);//右侧箭头'>'表示提交
+
+        searchView.setOnSuggestionListener(new SearchView.OnSuggestionListener() {
+            @Override
+            public boolean onSuggestionSelect(int position) {
+                return false;
+            }
+
+            @Override
+            public boolean onSuggestionClick(int position) {
+                return false;
+            }
+        });
 
 
     }
 
     @Override
     public boolean onSearchRequested() {
+        Log.i(TAG, "onSearchRequested() ===== ");
         Bundle bundle = new Bundle();
         bundle.putBoolean(SearchableActivity.EXTRA_BOOLEAN_DATA, true);
         startSearch("initialQueryString", false, bundle, false);

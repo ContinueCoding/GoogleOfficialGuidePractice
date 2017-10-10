@@ -8,7 +8,7 @@
         android:id="@+id/search_dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         android:layout_gravity="center_horizontal"
         android:text="Search Dialog"
         android:textAllCaps="false"
@@ -17,6 +17,9 @@
     <SearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        android:layout_height="50dp"
+        android:background="#ececec"
+        android:voiceIcon="@mipmap/ic_launcher_round"
+        />
 
 </LinearLayout>

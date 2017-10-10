@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.huoxy.googleofficialpractice.R;
 
@@ -47,6 +48,7 @@ public class SearchableActivity extends AppCompatActivity {
     }
 
     private void doSearch(String keyword, @Nullable Bundle bundleExtra){
+        Toast.makeText(this, "keyword = " + keyword, Toast.LENGTH_SHORT).show();
         Log.i(TAG, "keyword = " + keyword);
         if(bundleExtra != null){
             boolean aBoolean = bundleExtra.getBoolean(EXTRA_BOOLEAN_DATA, false);
