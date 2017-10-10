@@ -189,6 +189,16 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             />
+
+        <Button
+            android:id="@+id/drag_and_drop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="拖拽"
+            android:textAllCaps="false"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            />
     </LinearLayout>
 </ScrollView>
 

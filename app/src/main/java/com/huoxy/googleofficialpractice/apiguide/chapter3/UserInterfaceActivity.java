@@ -11,7 +11,6 @@ import android.support.annotation.IdRes;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -35,8 +34,6 @@ import android.widget.ToggleButton;
 import com.huoxy.googleofficialpractice.R;
 import com.huoxy.googleofficialpractice.apiguide.ApiGuideActivity;
 
-import static android.os.Build.ID;
-
 public class UserInterfaceActivity extends AppCompatActivity {
 
     EditText et_input;
@@ -59,6 +56,8 @@ public class UserInterfaceActivity extends AppCompatActivity {
     Button customToast;
 
     Button searchDemo;
+
+    Button dragAndDrop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -223,6 +222,14 @@ public class UserInterfaceActivity extends AppCompatActivity {
                 startActivity(new Intent(UserInterfaceActivity.this, SearchActivity.class));
             }
         });
+
+        dragAndDrop = (Button) findViewById(R.id.drag_and_drop);
+        dragAndDrop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserInterfaceActivity.this, DragAndDropActivity.class));
+            }
+        });
     }
 
     private void createSimpleNotification() {
@@ -256,7 +263,7 @@ public class UserInterfaceActivity extends AppCompatActivity {
         notificationManager.notify(0, builder.build());
     }
 
-    private void createProgressNotification(){
+    private void createProgressNotification() {
         final NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle("Progress Notification")
@@ -269,7 +276,7 @@ public class UserInterfaceActivity extends AppCompatActivity {
                     public void run() {
                         int incr;
                         // Do the "lengthy" operation 20 times
-                        for (incr = 0; incr <= 100; incr+=5) {
+                        for (incr = 0; incr <= 100; incr += 5) {
                             // Sets the progress indicator to a max value, the
                             // current completion percentage, and "determinate"
                             // state
@@ -288,16 +295,16 @@ public class UserInterfaceActivity extends AppCompatActivity {
                         // When the loop is finished, updates the notification
                         builder.setContentText("Download complete")
                                 // Removes the progress bar
-                                .setProgress(0,0,false);
+                                .setProgress(0, 0, false);
                         notificationManager.notify(0, builder.build());
                     }
                 }
-        // Starts the thread by calling the run() method in its Runnable
+                // Starts the thread by calling the run() method in its Runnable
         ).start();
 
     }
 
-    private void createProgressNotification2(){
+    private void createProgressNotification2() {
         final NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle("Progress Notification")
@@ -310,7 +317,7 @@ public class UserInterfaceActivity extends AppCompatActivity {
                     public void run() {
                         int incr;
                         // Do the "lengthy" operation 20 times
-                        for (incr = 0; incr <= 100; incr+=5) {
+                        for (incr = 0; incr <= 100; incr += 5) {
                             // Sets the progress indicator to a max value, the
                             // current completion percentage, and "determinate"
                             // state
@@ -329,7 +336,7 @@ public class UserInterfaceActivity extends AppCompatActivity {
                         // When the loop is finished, updates the notification
                         builder.setContentText("Download complete")
                                 // Removes the progress bar
-                                .setProgress(0,0,false);
+                                .setProgress(0, 0, false);
                         notificationManager.notify(0, builder.build());
                     }
                 }
@@ -338,7 +345,7 @@ public class UserInterfaceActivity extends AppCompatActivity {
 
     }
 
-    private void createFullScreenN(){
+    private void createFullScreenN() {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle("浮动通知")
