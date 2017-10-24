@@ -104,7 +104,8 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".apiguide.chapter3.DragAndDropActivity"></activity>
+        <activity android:name=".apiguide.chapter3.DragAndDropActivity" />
+        <activity android:name=".apiguide.chapter4.AnimationGraphicActivity"></activity>
     </application>
 
 </manifest>

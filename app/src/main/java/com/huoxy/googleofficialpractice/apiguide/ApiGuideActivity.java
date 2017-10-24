@@ -10,6 +10,7 @@ import com.huoxy.googleofficialpractice.R;
 import com.huoxy.googleofficialpractice.apiguide.chapter1.AppComponentActivity;
 import com.huoxy.googleofficialpractice.apiguide.chapter2.AppResourcesActivity;
 import com.huoxy.googleofficialpractice.apiguide.chapter3.UserInterfaceActivity;
+import com.huoxy.googleofficialpractice.apiguide.chapter4.AnimationGraphicActivity;
 
 public class ApiGuideActivity extends AppCompatActivity {
 
@@ -45,7 +46,13 @@ public class ApiGuideActivity extends AppCompatActivity {
             }
         });
 
-
+        //4 - 动画 & 图形
+        findViewById(R.id.animation_graphic).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ApiGuideActivity.this, AnimationGraphicActivity.class));
+            }
+        });
     }
 
     @Override

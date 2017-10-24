@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:animateLayoutChanges="true"
+    tools:context="com.huoxy.googleofficialpractice.apiguide.chapter4.AnimationGraphicActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="动画 / 图形"
+        android:layout_margin="5dp"
+        android:textSize="20sp"
+        android:textColor="#f00"
+        />
+
+    <Button
+        android:id="@+id/add_view_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="添加子View"
+        android:textAllCaps="false"
+        />
+
+</LinearLayout>
