@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context="com.huoxy.googleofficialpractice.apiguide.chapter5.MediaActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Audio - Video"
+        android:layout_margin="10dp"
+        android:textSize="20sp"
+        android:textColor="#f00"
+        />
+
+    <Button
+        android:id="@+id/audio_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 - Audio App"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:layout_margin="20dp"
+        />
+
+    <Button
+        android:id="@+id/video_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2 - Video App"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:layout_margin="20dp"
+        />
+</LinearLayout>

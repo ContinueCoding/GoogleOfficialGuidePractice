@@ -11,6 +11,7 @@ import com.huoxy.googleofficialpractice.apiguide.chapter1.AppComponentActivity;
 import com.huoxy.googleofficialpractice.apiguide.chapter2.AppResourcesActivity;
 import com.huoxy.googleofficialpractice.apiguide.chapter3.UserInterfaceActivity;
 import com.huoxy.googleofficialpractice.apiguide.chapter4.AnimationGraphicActivity;
+import com.huoxy.googleofficialpractice.apiguide.chapter5.MediaActivity;
 
 public class ApiGuideActivity extends AppCompatActivity {
 
@@ -51,6 +52,14 @@ public class ApiGuideActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ApiGuideActivity.this, AnimationGraphicActivity.class));
+            }
+        });
+
+        //5 - 多媒体App
+        findViewById(R.id.media_apps).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ApiGuideActivity.this, MediaActivity.class));
             }
         });
     }

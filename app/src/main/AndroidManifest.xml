@@ -105,7 +105,16 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity android:name=".apiguide.chapter3.DragAndDropActivity" />
-        <activity android:name=".apiguide.chapter4.AnimationGraphicActivity"></activity>
+        <activity android:name=".apiguide.chapter4.AnimationGraphicActivity" />
+        <activity android:name=".apiguide.chapter5.MediaActivity" />
+
+        <service android:name=".apiguide.chapter5.MediaPlaybackService">
+            <intent-filter>
+                <action android:name="android.media.browse.MediaBrowserService" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".apiguide.chapter5.MediaPlayerActivity"></activity>
     </application>
 
 </manifest>
