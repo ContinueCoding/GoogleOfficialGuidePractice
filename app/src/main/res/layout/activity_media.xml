@@ -35,4 +35,25 @@
         android:textSize="18sp"
         android:layout_margin="20dp"
         />
+
+    <Button
+        android:id="@+id/media_recorder_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3 - MediaRecorder - Record"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:layout_margin="10dp"
+        />
+
+    <Button
+        android:id="@+id/media_recorder_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3 - MediaRecorder - Play"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:layout_margin="10dp"
+        />
+
 </LinearLayout>
