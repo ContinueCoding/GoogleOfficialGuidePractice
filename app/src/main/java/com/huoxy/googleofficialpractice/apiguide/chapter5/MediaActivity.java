@@ -1,9 +1,11 @@
 package com.huoxy.googleofficialpractice.apiguide.chapter5;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
+import android.media.MediaRouter;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -88,6 +90,15 @@ public class MediaActivity extends AppCompatActivity {
                 startPlaying = !startPlaying;
             }
         });
+
+        //4 - 自定义相机
+        findViewById(R.id.camera_app).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MediaActivity.this, CameraActivity.class));
+            }
+        });
+
     }
 
     private void onRecord(boolean start) {
