@@ -12,6 +12,7 @@ import com.huoxy.googleofficialpractice.apiguide.chapter2.AppResourcesActivity;
 import com.huoxy.googleofficialpractice.apiguide.chapter3.UserInterfaceActivity;
 import com.huoxy.googleofficialpractice.apiguide.chapter4.AnimationGraphicActivity;
 import com.huoxy.googleofficialpractice.apiguide.chapter5.MediaActivity;
+import com.huoxy.googleofficialpractice.apiguide.chapter6.LocationSensorsActivity;
 
 public class ApiGuideActivity extends AppCompatActivity {
 
@@ -60,6 +61,14 @@ public class ApiGuideActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ApiGuideActivity.this, MediaActivity.class));
+            }
+        });
+
+        //6 - Location and Sensors
+        findViewById(R.id.location).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ApiGuideActivity.this, LocationSensorsActivity.class));
             }
         });
     }

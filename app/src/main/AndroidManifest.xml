@@ -6,6 +6,7 @@
         android:name="android.hardware.camera2"
         android:required="true" />
     <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.location.gps" />
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
@@ -118,8 +119,10 @@
         </service>
 
         <activity android:name=".apiguide.chapter5.MediaPlayerActivity" />
-        <activity android:name=".apiguide.chapter5.CameraActivity"
-            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".apiguide.chapter5.CameraActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".apiguide.chapter6.LocationSensorsActivity"></activity>
     </application>
 
 </manifest>

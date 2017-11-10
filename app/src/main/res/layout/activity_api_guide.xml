@@ -63,6 +63,17 @@
             android:textColor="#000"
             android:layout_margin="5dp"
             />
+
+        <Button
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6 - Location and Sensors"
+            android:textSize="12sp"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:layout_margin="5dp"
+            />
     </LinearLayout>
 
 </ScrollView>
