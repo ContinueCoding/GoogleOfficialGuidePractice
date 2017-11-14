@@ -13,6 +13,7 @@ import com.huoxy.googleofficialpractice.apiguide.chapter3.UserInterfaceActivity;
 import com.huoxy.googleofficialpractice.apiguide.chapter4.AnimationGraphicActivity;
 import com.huoxy.googleofficialpractice.apiguide.chapter5.MediaActivity;
 import com.huoxy.googleofficialpractice.apiguide.chapter6.LocationSensorsActivity;
+import com.huoxy.googleofficialpractice.apiguide.chapter7.ConnectivityActivity;
 
 public class ApiGuideActivity extends AppCompatActivity {
 
@@ -69,6 +70,14 @@ public class ApiGuideActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ApiGuideActivity.this, LocationSensorsActivity.class));
+            }
+        });
+
+        //7 - Connectivity
+        findViewById(R.id.connectivity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ApiGuideActivity.this, ConnectivityActivity.class));
             }
         });
     }

@@ -8,6 +8,10 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.location.gps" />
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <!--<uses-permission android:name="android.permission.BLUETOOTH_PRIVILEGED" />-->
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
     <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
@@ -122,7 +126,8 @@
         <activity
             android:name=".apiguide.chapter5.CameraActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".apiguide.chapter6.LocationSensorsActivity"></activity>
+        <activity android:name=".apiguide.chapter6.LocationSensorsActivity" />
+        <activity android:name=".apiguide.chapter7.ConnectivityActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context="com.huoxy.googleofficialpractice.apiguide.chapter7.ConnectivityActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Connectivity"
+        android:textSize="20sp"
+        android:textColor="#f00"
+        android:layout_margin="5dp"
+        />
+
+    <Button
+        android:id="@+id/check_and_enable_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="检查蓝牙 + 开启蓝牙"
+        android:textAllCaps="false"
+        android:layout_margin="5dp"
+        />
+
+    <Button
+        android:id="@+id/find_bound_device"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="查找已配对的蓝牙设备"
+        android:textAllCaps="false"
+        android:layout_margin="5dp"
+        />
+
+    <Button
+        android:id="@+id/find_device"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="查找蓝牙设备"
+        android:textAllCaps="false"
+        android:layout_margin="5dp"
+        />
+
+    <Button
+        android:id="@+id/start_discoverable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="启用可检测性 - 允许其他设备查找我"
+        android:textAllCaps="false"
+        android:layout_margin="5dp"
+        />
+</LinearLayout>
