@@ -10,7 +10,7 @@
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <!--<uses-permission android:name="android.permission.BLUETOOTH_PRIVILEGED" />-->
+    <!-- <uses-permission android:name="android.permission.BLUETOOTH_PRIVILEGED" /> -->
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
@@ -127,7 +127,13 @@
             android:name=".apiguide.chapter5.CameraActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".apiguide.chapter6.LocationSensorsActivity" />
-        <activity android:name=".apiguide.chapter7.ConnectivityActivity"></activity>
+        <activity android:name=".apiguide.chapter7.ConnectivityActivity" />
+        <activity android:name=".apiguide.chapter8.TextAndInputActivity" />
+
+        <service
+            android:name=".apiguide.chapter8.HuoIMEService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

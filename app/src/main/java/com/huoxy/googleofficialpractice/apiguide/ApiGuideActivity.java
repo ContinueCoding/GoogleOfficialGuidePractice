@@ -14,6 +14,7 @@ import com.huoxy.googleofficialpractice.apiguide.chapter4.AnimationGraphicActivi
 import com.huoxy.googleofficialpractice.apiguide.chapter5.MediaActivity;
 import com.huoxy.googleofficialpractice.apiguide.chapter6.LocationSensorsActivity;
 import com.huoxy.googleofficialpractice.apiguide.chapter7.ConnectivityActivity;
+import com.huoxy.googleofficialpractice.apiguide.chapter8.TextAndInputActivity;
 
 public class ApiGuideActivity extends AppCompatActivity {
 
@@ -78,6 +79,14 @@ public class ApiGuideActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ApiGuideActivity.this, ConnectivityActivity.class));
+            }
+        });
+
+        //8 - text_and_input
+        findViewById(R.id.text_and_input).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ApiGuideActivity.this, TextAndInputActivity.class));
             }
         });
     }
