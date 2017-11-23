@@ -29,7 +29,7 @@ public class WebAppsActivity extends AppCompatActivity {
 
     //JsBridge
     private BridgeWebView bridgeWebView;
-    private Button sendMsg;
+    private Button sendMsg, callJsFunction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,7 @@ public class WebAppsActivity extends AppCompatActivity {
     private void jsBridgeTest(){
         bridgeWebView = (BridgeWebView) findViewById(R.id.bridge_web_view);
         sendMsg = (Button) findViewById(R.id.send_msg);
+        callJsFunction = (Button) findViewById(R.id.call_js_function);
 
         bridgeWebView.setDefaultHandler(new DefaultHandler());
         bridgeWebView.setWebChromeClient(new WebChromeClient());
@@ -69,6 +70,13 @@ public class WebAppsActivity extends AppCompatActivity {
         });
 
         sendMsg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bridgeWebView.send("Android send Msg to Js : Hello JS, this is Android");
+            }
+        });
+
+        callJsFunction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bridgeWebView.callHandler("functionInJs", "Call Js Function in Android", new CallBackFunction() {
