@@ -23,6 +23,7 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -133,7 +134,9 @@
         <service
             android:name=".apiguide.chapter8.HuoIMEService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity android:name=".apiguide.chapter9.WebAppsActivity"></activity>
     </application>
 
 </manifest>

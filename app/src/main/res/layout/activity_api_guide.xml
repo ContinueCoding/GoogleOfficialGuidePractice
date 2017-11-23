@@ -96,6 +96,17 @@
             android:textColor="#000"
             android:layout_margin="5dp"
             />
+
+        <Button
+            android:id="@+id/web_apps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9 - Web Apps"
+            android:textSize="12sp"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:layout_margin="5dp"
+            />
     </LinearLayout>
 
 </ScrollView>

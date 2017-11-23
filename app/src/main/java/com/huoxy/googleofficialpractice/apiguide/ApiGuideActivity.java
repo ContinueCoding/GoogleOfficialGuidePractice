@@ -15,6 +15,7 @@ import com.huoxy.googleofficialpractice.apiguide.chapter5.MediaActivity;
 import com.huoxy.googleofficialpractice.apiguide.chapter6.LocationSensorsActivity;
 import com.huoxy.googleofficialpractice.apiguide.chapter7.ConnectivityActivity;
 import com.huoxy.googleofficialpractice.apiguide.chapter8.TextAndInputActivity;
+import com.huoxy.googleofficialpractice.apiguide.chapter9.WebAppsActivity;
 
 public class ApiGuideActivity extends AppCompatActivity {
 
@@ -87,6 +88,14 @@ public class ApiGuideActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ApiGuideActivity.this, TextAndInputActivity.class));
+            }
+        });
+
+        //9 - Web Apps
+        findViewById(R.id.web_apps).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ApiGuideActivity.this, WebAppsActivity.class));
             }
         });
     }
